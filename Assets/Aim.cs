@@ -37,7 +37,7 @@ public class Aim : MonoBehaviour {
 	
 	
 	//Used in determining whether the player will be aiming or standing
-	public bool crouchEngaged = false;
+	public bool aimEngaged = false;
 
 	//Camera Variables
 	private Camera myCamera;
@@ -93,9 +93,9 @@ public class Aim : MonoBehaviour {
 	{
 		//Engage aiming when the player presses w, and is not already aiming, and the cursor is not unlocked.
 		
-		if(Input.GetButtonDown("Aim") && crouchEngaged == false && Screen.lockCursor == true)
+		if(Input.GetButtonDown("Aim") && aimEngaged == false && Screen.lockCursor == true)
 		{
-			crouchEngaged = true;
+			aimEngaged = true;
 			
 			
 			//Moves CameraHead
@@ -124,9 +124,9 @@ public class Aim : MonoBehaviour {
 		
 		//Disengage aiming when the player presses w, and is currently crouching and the cursor is not unlocked.
 		
-		if(Input.GetButtonUp("Aim") && crouchEngaged == true && Screen.lockCursor == true)
+		if(Input.GetButtonUp("Aim") && aimEngaged == true && Screen.lockCursor == true)
 		{
-			crouchEngaged = false;
+			aimEngaged = false;
 			
 			//calculate position of CameraHead after zooming disengaged
 			Vector3 cameraPos = new Vector3(cameraHeadTransform.localPosition.x, cameraHeadTransform.localPosition.y,cameraHeadTransform.localPosition.z-ZoomDistance);
@@ -150,4 +150,3 @@ public class Aim : MonoBehaviour {
 
 	
 }
-
